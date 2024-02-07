@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Red Header</title>
+<title>Welcome to Mynhardt's Projects</title>
 <style>
   /* CSS for the header */
   header {
-    background-color: #FF0000; /* Red color */
-    padding: 20px; /* Add some padding for spacing */
-    text-align: center; /* Center-align the text */
-    color: #fff; /* Text color */
-    font-size: 24px; /* Font size */
+    background-color: #FF0000;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 40px;
   }
 </style>
 </head>
