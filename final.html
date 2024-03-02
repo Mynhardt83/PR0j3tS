@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recommendation System</title>
+        <style>
+            /* Your CSS styles here */
+            /* Popup styles */
+            .popup {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #ff69b4; /* Pink background */
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+                text-align: center;
+            }
+    
+            /* OK button styles */
+            .popup button {
+                background-color: white;
+                color: #ff69b4; /* Pink text color */
+                border: none;
+                padding: 10px 20px;
+                margin-top: 20px;
+                cursor: pointer;
+            }
+    
+            .popup button:hover {
+                background-color: #f0f0f0; /* Light gray background on hover */
+            }
+        </style>
+    </head>
+
+<style>
+    /* Embedded CSS styles */
+
+/* Profile */
+.profile, .contact-info-container, .profile-text {
+  display: flex;
+  align-items: center;
+}
+
+.profile img {
+  margin-right: 20px;
+}
+
+.contact-info {
+  margin: 1px 0;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #6B3B85;
+  padding: 10px 20px;
+  color: #ffffff;
+  height: 115px;
+}
+
+/* Embossed Text */
+.embossed-text {
+  font-weight: bold;
+  color: white;
+  text-shadow: 0.5px 0.5px 4px rgba(0,0,0,1);
+}
+
+/* Navigation */
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li:first-child {
+  margin-left: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Skill Container */
+.skill-container {
+  display: grid;
+  grid-template-columns: repeat(3, 5cm);
+  gap: 2cm;
+}
+
+.skill-box {
+  width: 4cm;
+  height: 3cm;
+  border: 1px solid black;
+  box-shadow: 
+    2px 2px 5px rgba(255, 0, 0, 0.5),
+    -2px -2px 5px rgba(0, 255, 0, 0.5),
+    2px -2px 5px rgba(0, 0, 255, 0.5),
+    -2px 2px 5px rgba(255, 255, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.skill-name,
+.experience {
+  text-align: center;
+}
+
+/* Project */
+.project {
+  padding-bottom: 20px;
+}
+
+.project h3 {
+  font-family: "Arial black", sans-serif;
+  font-size: 20px;
+}
+
+.project p {
+  display: list-item;
+  list-style-type: disc;
+  margin-left: 60px;
+  border-top: 2px solid #ccc;
+  width: 80%;
+}
+
+/* Recommendation */
+.recommendation-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 1cm;
+}
+
+.recommendation {
+  width: calc(33.33% - 1cm);
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Leave Recommendation Form */
+#leave-recommendation {
+  text-align: center;
+}
+
+#leave-recommendation form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+}
+
+#leave-recommendation form input[name="name"] {
+  margin-bottom: 10px;
+}
+
+#leave-recommendation form textarea {
+  width: 80%;
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+#leave-recommendation form button {
+  background-color: white;
+  color: #6B3B85;
+  border: 2px solid #6B3B85;
+  box-shadow: 2px 2px 5px rgba(107, 59, 133, 0.5);
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#leave-recommendation form button:hover {
+  background-color: #6B3B85;
+  color: white;
+}
+
+/* IconButton */
+.iconbutton a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.iconbutton img {
+  width: 100%;
+  height: auto;
+}
+
+.iconbutton a:hover {
+  /* Add hover styles if necessary */
+}
+
+
+
+</style>
+
+</head>
+<body>
+
+<header>
+    <div>
+        <h2 id="styled-name">Mynhardt</h2>
+        <p class="contact-info">
+            <span class="icon">&#9993;</span> mynhardt@example.com
+        </p>
+
+        <p class="contact-info">
+            <span class="icon">&#128222;</span> +123-456-7890
+        </p>
+        
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#recommendations">Recommendations</a></li>
+         </ul>
+     </nav>
+</header>
+
+<main>
+<section id="about">
+  <h2>About Me</h2>
+  <div class="profile">
+    <img src="https://t4.ftcdn.net/jpg/01/47/30/85/240_F_147308572_81dyi2Ly7VSLVNQKl3TOm5e4NiKurjcq.jpg" alt="Profile Picture">
+    <div class="profile-text">
+    <h2 style="color: #6B3B85;"> Hi, I'm Mynhardt! &#x1F44B;</h2>
+      <p><span class="embossed-text">I am an accomplished Agusta A109 Commander with a wealth of operational experience and expertise across various fixed-wing and helicopter platforms. My career is marked by a commitment to excellence and a passion for continuous learning.</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+    <h2 style="color: #6B3B85;">Skills</h2>
+    <div class="skill-container">
+        <div class="skill-box">
+            <div class="icon">🚀</div>
+            <div class="skill-name">HTML</div>
+            <div class="experience">3.2.1 years experience</div>
+        </div>
+    
+        <div class="skill-box">
+            <div class="icon">🚁</div>
+            <div class="skill-name">Helicopter Pilot</div>
+            <div class="experience">9 years experience</div>
+        </div>
+    
+        <div class="skill-box">
+            <div class="icon">☕</div>
+            <div class="skill-name">Java</div>
+            <div class="experience">0.1 years experience</div>
+        </div>
+
+        <div class="skill-box">
+            <div class="icon">🚀</div>
+            <div class="skill-name">Rocket Scientist</div>
+            <div class="experience">Sure</div>
+        </div>
+
+              <div class="skill-box">
+            <div class="icon">🔫</div>
+            <div class="skill-name">Soldier</div>
+            <div class="experience">20 years</div>
+        </div>
+    
+        <div class="skill-box">
+            <div class="icon">🎹</div>
+            <div class="skill-name">Pianist</div>
+            <div class="experience">30 years</div>
+        </div>
+    </div>
+  </section>
+  
+
+  <section id="projects">
+    <h2 style="color: #6B3B85;">Projects</h2>
+    <div class="project">
+      <h3 style="margin-left: 30px;">EcoTrack App</h3>
+      <p>EcoTrack is a mobile application aimed at promoting eco-friendly practices by allowing users to track their carbon footprint, set sustainability goals, and discover green initiatives in their area.</p>
+    </div>
+    <div class="project">
+      <h3 style="margin-left: 30px;">VirtualFit VR Experience</h3>
+      <p>VirtualFit offers an immersive virtual reality fitness experience, providing users with personalized workouts, interactive classes, and real-time feedback, revolutionizing the way people engage with exercise from the comfort of their homes.</p>
+    </div>
+    <div class="project">
+      <h3 style="margin-left: 30px;">SmartHome Automation System</h3>
+      <p>The SmartHome Automation System integrates cutting-edge IoT technology to streamline household tasks, offering automated control of lighting, temperature, security, and entertainment systems, providing users with convenience, comfort, and peace of mind.</p>
+    </div>
+  </section>
+
+  <section id="recommendations">
+    <h2 style="color: #6B3B85;">Recommendations</h2>
+    <div class="recommendation-container">
+        <div class="recommendation">
+            <cite>"Working with Mynhardt has been an absolute pleasure. His expertise in web programming is unmatched, and his dedication to delivering high-quality results is commendable. Mynhardt's attention to detail and problem-solving skills have been instrumental in overcoming various challenges we faced during our project. I highly recommend Mynhardt for any web programming tasks; his professionalism and technical proficiency make him an invaluable asset to any team."</cite>
+            <blockquote>- Sarah Smith, Project Manager</blockquote>
+        </div>
+        <div class="recommendation">
+            <cite>- "I cannot speak highly enough of Mynhardt's web programming skills. Her ability to understand our project requirements and translate them into elegant and efficient code is remarkable. Mynhardt's proactive approach and effective communication ensured that our project was completed on time and exceeded our expectations. I would not hesitate to collaborate with Mynhardt again on future projects, and I highly recommend her to anyone seeking a skilled and reliable web programmer."</cite>
+            <blockquote>- Michael Johnson, Software Engineer</blockquote>
+        </div>
+        <div class="recommendation">
+            <cite>- "Having worked closely with Mynhardt on multiple web programming projects, I can confidently say that she is an exceptional talent in the field. Mynhardt's creativity, technical proficiency, and commitment to excellence set her apart from others. Her innovative solutions and attention to detail have consistently impressed both our team and clients. I wholeheartedly endorse Mynhardt for any web programming tasks; her passion for her work and ability to deliver outstanding results make her an invaluable asset to any project."</cite>
+            <blockquote>- David Thompson, Creative Director</blockquote>
+        </div>
+    </div>
+</section>
+     <!-- Recommendations -->
+     <section id="recommendations">
+        <div style="clear:both;"></div>
+        <div class="all_recommendations" id="all_recommendations">
+        <!-- Existing recommendations here -->
+        </div>
+    </section>
+
+      <!-- Recommendation Form -->
+      <section id="leave-recommendation">
+        <h2>Leave a Recommendation</h2>
+        <form id="recommendation_form">
+          <input type="text" id="name" placeholder="Name (Optional)" name="name">
+          <textarea id="message" placeholder="Message" name="message"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+  
+      <!-- Popup -->
+      <div class="popup" id="popup">
+        <img src="C:\Users\mynha\Desktop\check_mark.png" style="width: 50px; height: 50px;">
+        <h3>Thanks for leaving a recommendation!</h3>
+        <button onclick="hidePopup()">OK</button>
+      </div>
+  
+      <script>
+          function submitRecommendation() {
+              var name = document.getElementById("name").value;
+              var message = document.getElementById("message").value;
+  
+              var allRecommendations = document.getElementById("all_recommendations");
+              var newRecommendation = document.createElement("div");
+              newRecommendation.classList.add("recommendation");
+              newRecommendation.innerHTML = `<span>&#8220;</span>${message}<span>&#8221;</span>`;
+              allRecommendations.appendChild(newRecommendation);
+  
+              showPopup();
+          }
+  
+          function showPopup() {
+              var popup = document.getElementById("popup");
+              popup.style.display = "block";
+          }
+  
+          function hidePopup() {
+              var popup = document.getElementById("popup");
+              popup.style.display = "none";
+          }
+  
+          // Add event listener to form submission
+          document.getElementById("recommendation_form").addEventListener("submit", function(event) {
+              event.preventDefault(); // Prevent form submission
+              submitRecommendation(); // Call the function to handle recommendation submission
+          });
+      </script>
+
+
+</main>
+
+<footer>
+    <style>
+        .iconbutton {
+          position: fixed;
+          bottom: 20px; /* Adjust the distance from the bottom */
+          right: 20px; /* Adjust the distance from the right */
+          z-index: 999; /* Ensure it's above other content */
+        }
+      </style>
+      
+      <div class="iconbutton">
+        <a href="#" onclick="scrollToElement('home')">
+            <img src="C:\Users\mynha\Desktop\h4x0r\Courses\EDX - Project\arrow.png" alt="Logo">
+        </a>
+      </div>
+</footer>
+
+<script>
+    function scrollToElement(id) {
+        var element = document.getElementById(id);
+        if(element) {
+            element.scrollIntoView({behavior: "smooth"});
+        }
+    }
+</script>
+</footer>
+
+</body>
+</html>
